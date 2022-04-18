@@ -40,9 +40,9 @@ def main():
         if column == None or condition == None or query == None:
             cursor.execute("SELECT * FROM shipments") 
         else:
-            #sql = f"SELECT * FROM shipments WHERE {column} {condition} {query}"
-            #cursor.execute(sql)
-            cursor.execute("SELECT * FROM shipments WHERE %(column)s %(condition)s %(query)s", {'column': column, 'condition': condition, 'query': query});
+            sql = f"SELECT * FROM shipments WHERE {column} {condition} {query}"
+            cursor.execute(sql)
+            #cursor.execute("SELECT * FROM shipments WHERE %(column)s %(condition)s %(query)s", {'column': column, 'condition': condition, 'query': query});
     data = cursor.fetchall()
     return render_template('index.html', data = data, criteria = CRITERIA, conditions = CONDITIONS)
 

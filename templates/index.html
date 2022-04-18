@@ -7,10 +7,32 @@
     <title>Document</title>
 </head>
 <body>
+
+    <form method="POST">
+        <label for = "column-selection">Choose a column to query</label>
+        <select name = "column" id = "column-selection">
+            <option disabled selected value="">Column</option>
+            {% for criteria in criteria %}
+                <option value = "{{ criteria }}">{{ criteria }}</option>
+            {% endfor %}
+        </select>
+
+        <label for = "condition-selection">Choose query condition</label>
+        <select name = "condition" id = "condition-selection">
+            <option disabled selected value="">Condition</option>
+            {% for conditions in conditions %}
+                <option value = "{{ conditions }}">{{ conditions }}</option>
+            {% endfor %}
+        </select> 
+    
+        <input name="query" placeholder="Query" type="text">
+
+        <input type="submit" value="submit query">
+    </form>
     <table> 
         <thead> 
         <tr> 
-            <th>ID</th> 
+            <th>Row</th>
             <th>Date</th> 
             <th>Name</th>
             <th>Ammount</th>
@@ -18,16 +40,16 @@
         </tr> 
         </thead> 
         <tbody> 
-            {% for row in value %}  
-                <tr> 
-                    <td>{{row[0]}}</td> 
-                    <td>{{row[1]}}</td> 
-                    <td>{{row[2]}}</td> 
-                    <td>{{row[3]}}</td> 
-                    <td>{{row[4]}}</td> 
-                </tr> 
+            {% for row in data %}  
+            <tr> 
+                <td>{{loop.index}}</td>
+                <td>{{row[1]}}</td> 
+                <td>{{row[2]}}</td> 
+                <td>{{row[3]}}</td> 
+                <td>{{row[4]}}</td> 
+            </tr> 
             {% endfor %} 
         </tbody> 
     </table> 
 </body>
-</html>
+</html> 
